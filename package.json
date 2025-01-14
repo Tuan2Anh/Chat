@@ -4,10 +4,10 @@
 	"description": "",
 	"main": "server.js",
 	"scripts": {
-		"server": "nodemon backend/server.js",
-		"start": "concurrently \"node backend/server.js\" \"node backend/auth-server/server.js\"",
-		"auth-server": "nodemon auth-server/server.js",
-		"auth-start": "node auth-server/server.js", 
+		"server": "concurrently \"nodemon backend/server.js\" \"nodemon backend/auth-service/server.js\"",
+		"start": "concurrently \"node backend/server.js\" \"node backend/auth-service/server.js\"",
+		"auth-server": "nodemon auth-service/server.js",
+		"auth-start": "node auth-service/server.js", 
 		"build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
 	},
 	"type": "module",
