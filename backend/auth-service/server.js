@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import path from "path";
 
-import authRoutes from "./routes/auth.routes.js";
+import authRoutes from "./auth.routes.js";
 import connectToMongoDB from "./db/connectToMongoDB.js";
 
 dotenv.config();
