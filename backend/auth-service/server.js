@@ -1,11 +1,10 @@
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-import path from "path";
 
 import authRoutes from "./auth.routes.js";
 import connectToMongoDB from "./connectToMongoDB.js";
-
+import cors from "cors";
 import { app, server } from "../socket/socket.js";
 
 dotenv.config();
@@ -16,16 +15,16 @@ app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
 
-const __dirname = path.resolve();
-
-app.use(express.static(path.join(__dirname, "/frontend/dist")));
-
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
-});
-
-
 server.listen(PORT, () => {
     connectToMongoDB();
     console.log(`Main Server Running on port ${PORT}`);
 });
+
+
+
+app.use(
+    cors({
+        origin: "https://chat-5vv7.onrender.com",
+        credentials: true,
+    })
+);
