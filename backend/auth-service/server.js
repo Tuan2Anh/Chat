@@ -6,9 +6,9 @@ import path from "path";
 import authRoutes from "./auth.routes.js";
 import connectToMongoDB from "./connectToMongoDB.js";
 
-dotenv.config();
+import { app, server } from "../socket/socket.js";
 
-const app = express();
+dotenv.config();
 const PORT = process.env.AUTH_PORT || 4000; // Separate port for auth server
 
 app.use(express.json()); // Parse incoming JSON payloads
@@ -25,7 +25,7 @@ app.get("*", (req, res) => {
 });
 
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     connectToMongoDB();
-    console.log(`Auth Server Running on port ${PORT}`);
+    console.log(`Main Server Running on port ${PORT}`);
 });
