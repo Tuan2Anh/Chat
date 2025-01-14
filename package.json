@@ -5,7 +5,9 @@
 	"main": "server.js",
 	"scripts": {
 		"server": "nodemon backend/server.js",
-		"start": "node backend/server.js",
+		"start": "node backend/server.js", 
+		"auth-server": "nodemon auth-server/server.js",
+		"auth-start": "node auth-server/server.js", 
 		"build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
 	},
 	"type": "module",
